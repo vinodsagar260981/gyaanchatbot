@@ -10,12 +10,12 @@ load_dotenv('.env', override=True)
 
 AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY= os.getenv("AWS_SECRET_ACCESS_KEY")
-
+AWS_DEFAULT_REGION=os.getenv("AWS_DEFAULT_REGION")
 
 #bedrock client 
 bedrock = boto3.client(
     service_name = "bedrock-runtime",
-    region_name = "ap-south-1",
+    region_name = AWS_DEFAULT_REGION,
     aws_access_key_id=AWS_ACCESS_KEY_ID,
     aws_secret_access_key=AWS_SECRET_ACCESS_KEY
 )
@@ -28,7 +28,7 @@ llm = Bedrock(
     model_kwargs={"temperature": 0.9}
 )
 
-#prompt templatess
+#prompt templates
 def my_chatbot(language, user_text):
     prompt = PromptTemplate(
         input_variables=["language", "user_text"],
@@ -51,4 +51,5 @@ if language:
 if user_text:
     response = my_chatbot(language, user_text)
     st.write(response['text'])
+
 
