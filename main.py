@@ -28,7 +28,7 @@ llm = Bedrock(
     model_kwargs={"temperature": 0.9}
 )
 
-#prompt templates
+#prompt templatess
 def my_chatbot(language, user_text):
     prompt = PromptTemplate(
         input_variables=["language", "user_text"],
@@ -51,5 +51,4 @@ if language:
 if user_text:
     response = my_chatbot(language, user_text)
     st.write(response['text'])
-    
 
