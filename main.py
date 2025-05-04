@@ -8,17 +8,16 @@ import os
 
 load_dotenv('.env', override=True)
 
-aws_access_key_id = os.getenv("aws_access_key_id")
-aws_secret_access_key= os.getenv("aws_secret_access_key")
-region_name=os.getenv("region_name")
+AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY= os.getenv("AWS_SECRET_ACCESS_KEY")
+region_name=os.getenv("AWS_DEFAULT_REGION")
 
 #bedrock client 
-
 bedrock = boto3.client(
     service_name = "bedrock-runtime",
     region_name = region_name,
-    aws_access_key_id=aws_access_key_id,
-    aws_secret_access_key=aws_secret_access_key
+    aws_access_key_id=AWS_ACCESS_KEY_ID,
+    aws_secret_access_key=AWS_SECRET_ACCESS_KEY
 )
 
 model_id = "mistral.mistral-7b-instruct-v0:2"
