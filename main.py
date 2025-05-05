@@ -12,7 +12,7 @@ AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY= os.getenv("AWS_SECRET_ACCESS_KEY")
 AWS_DEFAULT_REGION=os.getenv("AWS_DEFAULT_REGION")
 
-#bedrock client 
+#bedrock client working
 bedrock = boto3.client(
     service_name = "bedrock-runtime",
     region_name = AWS_DEFAULT_REGION,
